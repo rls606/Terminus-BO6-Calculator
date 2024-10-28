@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculateur avec Symboles</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TERMINUS SECRET CALCULATOR</h1>
+        
+        <div class="variable-select">
+            <div class="select-wrapper">
+                <p>X:</p>
+                <div class="symbol-select" id="x-select">
+                    <div class="symbol-option selected" data-value="0">
+                        <img src="./assets/0.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="10">
+                        <img src="assets/10.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="11">
+                        <img src="assets/11.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="20">
+                        <img src="assets/20.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="21">
+                        <img src="assets/21.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="22">
+                        <img src="assets/22.png" class="symbol-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="select-wrapper">
+                <p>Y:</p>
+                <div class="symbol-select" id="y-select">
+                    <div class="symbol-option selected" data-value="0">
+                        <img src="./assets/0.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="10">
+                        <img src="assets/10.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="11">
+                        <img src="assets/11.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="20">
+                        <img src="assets/20.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="21">
+                        <img src="assets/21.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="22">
+                        <img src="assets/22.png" class="symbol-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="select-wrapper">
+                <p>Z:</p>
+                <div class="symbol-select" id="z-select">
+                    <div class="symbol-option selected" data-value="0">
+                        <img src="./assets/0.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="10">
+                        <img src="assets/10.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="11">
+                        <img src="assets/11.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="20">
+                        <img src="assets/20.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="21">
+                        <img src="assets/21.png" class="symbol-img">
+                    </div>
+                    <div class="symbol-option" data-value="22">
+                        <img src="assets/22.png" class="symbol-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results">
+            <h2>Results</h2>
+            <div class="result-item">
+                <p>1) 2x+11 = </p>
+                <span id="result1"></span>
+            </div>
+            <div class="result-item">
+                <p>2) (2z + y) - 5 = </p>
+                <span id="result2"></span>
+            </div>
+            <div class="result-item">
+                <p>3) | (y+z)-x | = </p>
+                <span id="result3"></span>
+            </div>
+
+        </div>
+        <div class="symbol-section">
+            <h2>Pictogram values</h2>
+            <div class="symbols-grid">
+                <div class="symbol-item">
+                    <img src="assets/0.png" class="symbol-img">
+                    <span>Value: 0</span>
+                </div>
+                <div class="symbol-item">
+                    <img src="assets/10.png" class="symbol-img">
+                    <span>Value: 10</span>
+                </div>
+                <div class="symbol-item">
+                    <img src="assets/11.png" class="symbol-img">
+                    <span>Value: 11</span>
+                </div>
+                <div class="symbol-item">
+                    <img src="assets/20.png" class="symbol-img">
+                    <span>Value: 20</span>
+                </div>
+                <div class="symbol-item">
+                    <img src="assets/21.png" class="symbol-img">
+                    <span>Value: 21</span>
+                </div>
+                <div class="symbol-item">
+                    <img src="assets/22.png" class="symbol-img">
+                    <span>Value: 22</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function initializeSymbolSelects() {
+            const selects = ['x', 'y', 'z'];
+            
+            selects.forEach(variable => {
+                const selectElement = document.getElementById(`${variable}-select`);
+                const options = selectElement.getElementsByClassName('symbol-option');
+                
+                Array.from(options).forEach(option => {
+                    option.addEventListener('click', () => {
+                        // Retirer la sélection précédente
+                        selectElement.querySelector('.selected').classList.remove('selected');
+                        // Ajouter la nouvelle sélection
+                        option.classList.add('selected');
+                        // Calculer les nouveaux résultats
+                        calculate();
+                    });
+                });
+            });
+        }
+
+        function getSelectedValue(variable) {
+            const select = document.getElementById(`${variable}-select`);
+            const selectedOption = select.querySelector('.selected');
+            return parseInt(selectedOption.dataset.value);
+        }
+
+        function calculate() {
+            // Récupérer les valeurs
+            const x = getSelectedValue('x');
+            const y = getSelectedValue('y');
+            const z = getSelectedValue('z');
+
+            // Calculer les résultats
+            const result1 = 2 * x + 11;
+            const result2 = ((2 * z + y) - 5);
+            const result3 = Math.abs((y + z) - x);
+
+            // Afficher les résultats
+            document.getElementById('result1').textContent = result1;
+            document.getElementById('result2').textContent = result2;
+            document.getElementById('result3').textContent = result3;
+        }
+
+        // Initialiser les sélecteurs et calculer les résultats initiaux
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeSymbolSelects();
+            calculate();
+        });
+    </script>
+</body>
+</html>

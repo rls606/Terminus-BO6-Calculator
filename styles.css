@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Rubik+Wet+Paint&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+body {
+    max-width: 800px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #82c6ea;
+}
+.container {
+    background-color: #181C14;
+    padding: 20px;
+}
+.symbol-section {
+    margin:20px;
+    padding: 10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #282828;
+    border-radius: 4px;
+}
+
+.symbol-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #282828;
+    border: 1px solid white;
+    border-radius: 4px;
+    margin: 10px;
+}
+.symbol-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    background-color: #f8f9fa;
+}
+.variable-select {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 4px;
+}
+.select-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #282828;
+}
+.symbol-select {
+    display: flex;
+    flex-wrap: wrap;
+}
+.symbol-option {
+    cursor: pointer;
+    padding: 5px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.symbol-option.selected {
+    border-color: #82c6ea;
+    background-color: #e7f1ff;
+}
+.symbol-option:hover {
+    background-color: #f0f0f0;
+}
+.results {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #282828;
+    border-radius: 4px;
+}
+.result-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-item > span{
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.result-item > p{
+    font-weight:400;
+    color:white;
+    margin-left: 10px;
+}
+
+h1{
+    color: #82c6ea;
+    font-family: "Rubik Wet Paint", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
